@@ -167,13 +167,13 @@ class Game
   end
 
   def new_game
-    if play_again?
+    if play_again == 'y'
       game = Game.new
       game.play_game
     end
   end
   
-  def play_again?
+  def play_again
     yes_no = ''
     until yes_no == 'y' || yes_no == 'n'
       puts 'Play Again? Y/N'
