@@ -137,13 +137,15 @@ class Game
   end
 
   def diag_win?(color)
-    (@board.rows - 3).times do |row|
-      (@board.cols - 3).times do |col|
+    3.times do |row|
+      4.times do |col|
         quad_colors = []
+        quad_colors_two = []
         4.times do |num|
-          quad_colors.push(@board.board[row + num][col + num][:status])
+          quad_colors.push(@board.board[row + num ][col+num][:status])
+          quad_colors_two.push(@board.board[row + num ][col-num + 3][:status])
         end
-        return true if quad_colors.all? { |x| x == color }
+        return true if quad_colors.all? { |x| x == color } || quad_colors_two.all? { |x| x == color }
       end
     end
     false
